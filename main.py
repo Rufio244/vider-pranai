@@ -4,29 +4,27 @@ from pranai_inventor import PranAIInventor
 from pranai_evaluator import PranAIEvaluator
 
 def main():
-    print("=" * 60)
-    print("🚀 VIDER PranAI v1.0")
-    print("🔍 ค้นหา วิเคราะห์ ประดิษฐ์ และพิสูจน์เทคโนโลยี")
-    print("⚙️  ใช้แกนหลัก Qvnt‑SC 1.7.1 Basic")
-    print("=" * 60)
+    print("=" * 65)
+    print("🚀 VIDER PranAI ระบบค้นหาและสร้างสรรค์เทคโนโลยี")
+    print("🔑 คีย์เปิดใช้งาน: ViderPranAI244")
+    print("⚙️  แกนหลัก: Qvnt‑SC 1.7.1 Basic")
+    print("=" * 65)
 
-    # เริ่มระบบ
-    core = PranAICore()
-    inventor = PranAIInventor(core)
+    try:
+        core = PranAICore()
+        inventor = PranAIInventor(core)
+        print("\n✅ ระบบพร้อมทำงานเต็มรูปแบบ")
 
-    # ตัวอย่างการใช้งาน
-    query = "ระบบกักเก็บพลังงานที่มีประสิทธิภาพสูง"
-    result = inventor.invent_technology(query)
+        # ตัวอย่างการใช้งาน
+        topic = "ระบบกักเก็บพลังงานประสิทธิภาพสูง"
+        result = inventor.invent_technology(topic)
 
-    # แสดงผล
-    print("\n📜 ผลการประดิษฐ์และตรวจสอบ:")
-    for k, v in result.items():
-        print(f"{k}: {v}")
+        print("\n📋 ผลลัพธ์การประดิษฐ์:")
+        for key, value in result.items():
+            print(f"• {key}: {value}")
 
-    # ประเมินอีกครั้ง
-    eval_res = PranAIEvaluator.evaluate_result(result["expected_efficiency"])
-    print(f"\n📊 ผลการประเมิน: {eval_res}")
+    except PermissionError as e:
+        print(f"\n❌ ไม่สามารถเปิดใช้งานได้: {e}")
 
 if __name__ == "__main__":
     main()
-
